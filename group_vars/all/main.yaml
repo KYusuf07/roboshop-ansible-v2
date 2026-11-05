@@ -18,6 +18,6 @@ rabbitmq_host: rabbitmq.vibelearning.online
 catalogue_host: catalogue.vibelearning.online
 user_host: user.vibelearning.online
 cart_host: cart.vibelearning.online
-dispatch_host: dispatch.vibelearning.yaml
+dispatch_host: dispatch.vibelearning.online
 shipping_host: shipping.vibelearning.online
 payment_host: payment.vibelearning.online
