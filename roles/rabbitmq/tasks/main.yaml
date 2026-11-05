@@ -19,7 +19,7 @@
     - name: create rabbitmq user and set administrator tag
       community.rabbitmq.rabbitmq_user:
         user: "{{ rabbitmq_user }}"
-        password: "{{ rabbitmq-password }}"
+        password: "{{ rabbitmq_password }}"
         vhost: /
         configure_priv: .*
         read_priv: .*
