@@ -27,26 +27,26 @@
         tags: administrator # This handles the 'set_user_tags' requirement idempotently
         state: present
 
-    # - name: enable RabbitMQ Management UI plugin
-    #   ansible.builtin.command: rabbitmq-plugins enable rabbitmq_management
-    #   register: plugin_enable
-    #   changed_when: "'The following plugins have been configured' in plugin_enable.stdout"
+    - name: enable RabbitMQ Management UI plugin
+      ansible.builtin.command: rabbitmq-plugins enable rabbitmq_management
+      register: plugin_enable
+      changed_when: "'The following plugins have been configured' in plugin_enable.stdout"
 
-    # - name: check for robot-shop exchanges
-    #   ansible.builtin.shell: rabbitmqctl list_exchanges | grep robot-shop
-    #   register: rmq_exchanges
-    #   changed_when: false
-    #   failed_when: rmq_exchanges.rc >= 2
+    - name: check for robot-shop exchanges
+      ansible.builtin.shell: rabbitmqctl list_exchanges | grep robot-shop
+      register: rmq_exchanges
+      changed_when: false
+      failed_when: rmq_exchanges.rc >= 2
 
-    # - name: list RabbitMQ queues, messages, and consumers
-    #   ansible.builtin.command: rabbitmqctl list_queues name messages consumers
-    #   register: rmq_queues
-    #   changed_when: false
+    - name: list RabbitMQ queues, messages, and consumers
+      ansible.builtin.command: rabbitmqctl list_queues name messages consumers
+      register: rmq_queues
+      changed_when: false
 
-    # - name: print execution results
-    #   ansible.builtin.debug:
-    #     msg: 
-    #       - "=== Robot-Shop Exchanges ==="
-    #       - "{{ rmq_exchanges.stdout_lines | default(['No robot-shop exchanges found']) }}"
-    #       - "=== Queues ==="
-    #       - "{{ rmq_queues.stdout_lines }}"
+    - name: print execution results
+      ansible.builtin.debug:
+        msg: 
+          - "=== Robot-Shop Exchanges ==="
+          - "{{ rmq_exchanges.stdout_lines | default(['No robot-shop exchanges found']) }}"
+          - "=== Queues ==="
+          - "{{ rmq_queues.stdout_lines }}"
