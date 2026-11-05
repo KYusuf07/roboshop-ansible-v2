@@ -57,6 +57,11 @@
       include_role:
         name: common
         tasks_from: systemd-setup
+        
+    - name: restart application
+      include_role:
+        name: common
+        tasks_from: restart    
 
     - name: start and enable dispatch service
       ansible.builtin.systemd:
