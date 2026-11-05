@@ -16,16 +16,16 @@
         state: started
         enabled: yes
 
-    # - name: create rabbitmq user and set administrator tag
-    #   community.rabbitmq.rabbitmq_user:
-    #     user: roboshop
-    #     password: roboshop123
-    #     vhost: /
-    #     configure_priv: .*
-    #     read_priv: .*
-    #     write_priv: .*
-    #     tags: administrator # This handles the 'set_user_tags' requirement idempotently
-    #     state: present
+    - name: create rabbitmq user and set administrator tag
+      community.rabbitmq.rabbitmq_user:
+        user: "{{ rabbitmq_user }}"
+        password: "{{ rabbitmq-password }}"
+        vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+        tags: administrator # This handles the 'set_user_tags' requirement idempotently
+        state: present
 
     # - name: enable RabbitMQ Management UI plugin
     #   ansible.builtin.command: rabbitmq-plugins enable rabbitmq_management
